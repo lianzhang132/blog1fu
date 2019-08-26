@@ -1,0 +1,43 @@
+<div class="paihang">
+
+<div class="paihang">
+            <h2 class="ab_title"><a href="/">站长推荐</a></h2>
+            <ul>
+                {% for v4 in article_is_recommend_list %}
+                    <li><b><a href="app01/diary/info/{{ v4.article_id }}" target="_blank">{{ v4.article_title }}</a></b>
+                    <p><i><a href="app01/diary/info/{{ v4.article_id }}" title="{{ v4.article_title }}"><img
+                            src="{{ v4.article_img }}" alt="{{ v4.article_title }}"/></a></i>{{ v4.article_description }}...
+                    </p>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+        </div>
+            <h2 class="ab_title"><a href="/">点击排行</a></h2>
+            <ul>
+                {% for v3 in art_obj_praise %}
+
+                     <li><b><a href="app01/diary/info/{{ v3.article_id }}" target="_blank">{{ v3.article_title }}</a></b>
+                    <p><i><a href="{% url 'app01:text' %}" title="{{ v3.article_title }}"><img
+                            src="{{ v3.article_img }}" alt="{{ v3.article_title }}"/></a></i>{{ v3.article_description }}...
+                    </p>
+                </li>
+
+                {% endfor %}
+            </ul>
+
+
+        <div class="links">
+            <h2 class="ab_title">友情链接</h2>
+            <ul>
+                <li><a href="/" title="连长个人博客">连长个人博客</a></li>
+            </ul>
+        </div>
+        <div class="weixin">
+            <h2 class="ab_title">微信关注</h2>
+            <ul>
+                <img src="/static/picture/wx1.jpg">
+            </ul>
+        </div>
+    </div>

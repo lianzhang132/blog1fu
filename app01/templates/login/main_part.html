@@ -1,0 +1,33 @@
+<ul>
+                {% for v1 in articles_list %}
+                    <li>
+                    <div class="tpic"><img src="{{ v1.article_img }}" title="{{ v1.article_title }}">
+                    </div>
+                    <b>{{ v1.article_title }}</b><span>{{ v1.article_description }}...</span><a
+                        href="app01/diary/info/{{ v1.article_id }}" target="_blank" class="readmore">阅读文章</a>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        <div class="pagin" >
+            <ul class="paginList" style="width: 500px;height: 100px;">
+                {% if articles_list.has_previous %}
+                    <li class="paginItem"><a
+                            href="/app01/main_part/?page={{ articles_list.previous_page_number }}"><span
+                            class="pagepre">上一页</span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}active{% endif %}"><a
+                            href="/app01/main_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if articles_list.has_next %}
+                    <li class="paginItem"><a
+                            href="/app01/main_part/?page={{ articles_list.next_page_number }}"><span
+                            class="pagenxt">下一页</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+

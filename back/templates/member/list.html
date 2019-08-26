@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>列表页</title>
+<link href="/static/back/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/back/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/back/js/jquery.js"></script>
+<script type="text/javascript" src="/static/back/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/static/back/js/select-ui.min.js"></script>
+<script src="/static/layer/layer.js"></script>
+ 
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 345			  
+	});
+	$(".select2").uedSelect({
+		width : 167  
+	});
+	$(".select3").uedSelect({
+		width : 100
+	});
+});
+</script>
+
+</head>
+
+<body>
+
+	<div class="place">
+	    <span>位置：</span>
+	    <ul class="placeul">
+		    <li><a href="#">首页</a></li>
+		    <li><a href="#">系统设置</a></li>
+	    </ul>
+    </div>
+    
+    <div class="formbody">   
+    <div id="usual1" class="usual">   
+  	<div id="tab2" class="tabson">   
+    <form action="">
+             {% csrf_token %}
+        <ul class="seachform">
+
+    <li><label>姓名</label><input name="member_name" type="text" class="scinput" /></li>
+    <li><label>电话</label><input name="member_tel" type="text" class="scinput" /></li>
+    <li><label>邮箱</label><input name="member_email" type="text" class="scinput" /></li>
+    <li><label>昵称</label><input name="member_nickname" type="text" class="scinput" /></li>
+    <li><label>&nbsp;</label><input id="search" type="button" class="scbtn" value="查询"/></li>
+
+    </ul>
+        </form>
+
+
+    <table class="tablelist">
+    	<thead>
+<tr>
+   <th><input name="" type="checkbox" onclick="swapCheck()"/></th>
+   <th>姓名</th>
+   <th>电话</th>
+   <th>邮箱</th>
+   <th>昵称</th>
+   <th>密码</th>
+   </tr>
+   </thead>
+        <tbody class="maina">
+
+        </tbody>
+    </table>
+
+
+
+
+    </div>
+
+	</div>
+         <script type="text/javascript">
+        //checkbox 全选/取消全选
+        var isCheckAll = false;
+        function swapCheck() {
+            if (isCheckAll) {
+                $("input[type='checkbox']").each(function() {
+                    this.checked = false;
+                });
+                isCheckAll = false;
+            } else {
+                $("input[type='checkbox']").each(function() {
+                    this.checked = true;
+                });
+                isCheckAll = true;
+            }
+        }
+    </script>
+         <script>
+        //首次页面加载，通过ajax拿到数据，放在maina容器里
+        show_list();
+        function show_list() {
+            $.post("{% url 'back:member/list_part/' %}",$("form").serialize(),function (data) {//post 提交参数 第一个是 提交路径 第二个序列化数据 第三个函数对接收到的数据的处理
+                $(".maina").html(data);
+            })
+        }
+         //点击分页，点击a连接：
+        $(document).on("click",".pagin a",function () {
+            $.post(this.href,$("form").serialize(),function (data) {
+                $(".maina").html(data)
+
+            });
+            return false;//让a链接失效
+
+        });
+        //点击删除
+        $(document).on("click",".del",function () {
+            _this=this;
+            layer.confirm("您确定删除吗？",{
+                btn:["确定","取消"]
+            },function () {
+                id=$(_this).parent().data("id");
+                $.post("{% url 'back:member/delete/' %}",{
+                        "id": id,
+                        "csrfmiddlewaretoken": "{{ csrf_token }}"
+                    },function (data) {
+                    if(data.status==1){
+                        layer.msg(data.info,function () {
+                            $(_this).parent().parent().remove();
+
+                        })
+
+                    }else {
+                        layer.msg(data.info)
+
+                    }
+
+                },"json" )
+
+
+            },function () {
+
+            });
+            return false
+
+
+        });
+        //点击查询按钮
+            $(document).on('click', '#search', function () {
+                show_list();
+            });
+    </script>
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+		$('.tablelist tbody tr:odd').addClass('odd');
+	</script>
+    
+    </div>
+
+
+</body>
+
+</html>

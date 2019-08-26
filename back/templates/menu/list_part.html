@@ -1,0 +1,46 @@
+
+{% for v in menu_list %}
+            <tr>
+            <form action="" id="menuids">
+                {% csrf_token %}
+        <td><input name="menuids[]" type="checkbox" class="menuids" value="{{ v.menu_id }}" /></td> </form>
+        <td>{{ forloop.counter }}</td><!--编号-->
+        <td >{{ v.menu_name }}</td>
+        <td >{{ v.menu_path }}</td>
+        <td> {% if v.menu_pid.menu_name  %}{{ v.menu_pid.menu_name }} {% else %} <b >本菜单为一级菜单 无父级菜单</b>
+
+        {% endif %} </td>
+             <td data-id="{{ v.menu_id }}"><a href="/back/menu/update/{{ v.menu_id }}" class="tablelink">修改</a>
+                 <a href="javascript:;" class="tablelink del"> 删除</a></td>
+        </tr>
+
+        {% endfor %}
+
+<tr>
+    <td colspan="6">
+        <div class="pagin"><a href='javascript:;' id='muldel'>批量删除</a>
+            <div class="message">共<i class="blue">{{ menu_list1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if menu_list.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/menu/list_part/?page={{ menu_list.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/menu/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if menu_list.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/menu/list_part/?page={{ menu_list.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+
+</tr>

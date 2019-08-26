@@ -1,0 +1,39 @@
+
+{% for v in pra_obj %}
+            <tr>
+        <td><input name="" type="checkbox" value="" /></td>
+        <td>{{ v.article_id.article_title }}</td>
+        <td>{{ v.member_id.member_name }}</td>
+        <td data-id="{{ v.praise_id }}"> <a href="javascript:;" class="tablelink del"> 删除</a>     <a href="/back/praise/update/{{ v.praise_id }}" class="tablelink"> 修改</a></td>
+        </tr>
+
+        {% endfor %}
+
+<tr>
+    <td colspan=4>
+        <div class="pagin">
+            <div class="message">共<i class="blue">{{ pra_obj1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if pra_obj.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/praise/list_part/?page={{ pra_obj.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/praise/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if pra_obj.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/praise/list_part/?page={{ pra_obj.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+
+</tr>

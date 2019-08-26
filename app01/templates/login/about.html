@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>关于我</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="	"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/m.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="/static/js/modernizr.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <div id="mnav">
+        <div class="logo"><a href="/">博客天下</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+           <li class=""><a href="{% url 'app01:index1' %}">网站首页</a></li>
+
+
+            <li class=""><a href="{% url 'app01:about' %}">关于网站</a></li>
+
+
+            <li class=""><a href="{% url 'app01:diary/index/' %}">博客日记</a></li>
+
+            <li class=""><a href="{% url 'app01:share' %}">模板分享</a></li>
+
+
+            <li class=""><a href="{% url 'app01:study' %}">学无止境</a></li>
+
+
+            <li class=""><a href="{% url 'app01:gbook' %}">留言</a></li>
+            <li class=""><a href="{% url 'app01:article/add/' %}">发表博文</a></li>
+            <li class=""><a href="{% url 'back:login/login/' %}">后台登陆</a></li>
+            <li class=""><a href="{% url 'app01:enroll' %}">注册</a></li>
+            <li class=""><a href="{% url 'app01:logout' %}">退出</a></li>
+
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var oH2 = document.getElementById("mnavh");
+            var oUl = document.getElementById("starlist");
+            oH2.onclick = function () {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+            var obj = null;
+            var As = document.getElementById('starlist').getElementsByTagName('a');
+            obj = As[0];
+            for (i = 1; i < As.length; i++) {
+                if (window.location.href.indexOf(As[i].href) >= 0)
+                    obj = As[i];
+            }
+            obj.id = 'selected'
+        }
+    </script>
+</header>
+<div class="line46"></div>
+<div class="blank"></div>
+<article>
+    <div class="leftbox">
+        <div class="infos">
+            <div class="newsview">
+                <h2 class="intitle">您现在的位置是：<a href="/app01/index1/">首页</a>&nbsp;>&nbsp;<a href="/app01/about/">个人资料</a></h2>
+                <div class="news_infos">
+                    马云 （阿里巴巴集团创始人）
+马云，男，汉族，中共党员 [1]  ，1964年9月10日生于浙江省杭州市，祖籍浙江省嵊州市谷来镇， 阿里巴巴集团主要创始人，现担任阿里巴巴集团董事局主席、日本软银董事、大自然保护协会中国理事会主席兼全球董事会成员、华谊兄弟董事、生命科学突破奖基金会董事、联合国数字合作高级别小组联合主席。 [2-3]
+1988年毕业于杭州师范学院外语系，同年担任杭州电子工业学院英文及国际贸易教师，1995年创办中国第一家互联网商业信息发布网站“中国黄页”，1998年出任中国国际电子商务中心国富通信息技术发展有限公司总经理，1999年创办阿里巴巴，并担任阿里集团CEO、董事局主席。
+2013年5月10日，辞任阿里巴巴集团CEO，继续担任阿里集团董事局主席。 [4]  6月30日，马云当选全球互联网治理联盟理事会联合主席。 [5]
+2017年12月15日，荣获“影响中国”2017年度教育人物 [6]  。2018年9月10日，马云发出公开信宣布将于2019年9月10日卸任集团董事局主席，由CEO张勇接任。 2018年12月18日，党中央、国务院授予马云同志改革先锋称号，颁授改革先锋奖章。 [7]  2019年3月，马云以373亿美元财富排名2019年福布斯全球亿万富豪榜第21位。 [8]  2019年5月10日，马云等17位全球杰出人士被联合国秘书长古特雷斯任命为新一届可持续发展目标倡导者。 [9]
+1999年3月，马云正式辞去公职，后来被称为18罗汉的马云团队回到杭州，凑够50万元人民币
+创建阿里
+创建阿里(2张)
+ 开始了新一轮创业，开发阿里巴巴网站。
+1999年4月15日，阿里巴巴网站正式上线。Invest AB副总裁蔡崇信听说阿里巴巴后，飞赴杭州洽谈投资，在和马云谈了4天后，决定辞职加入阿里巴巴。
+1999年10月和2000年1月，阿里巴巴两次共从软银等国际投资机构融资2500万美元。
+2003年5月10日，马云创立淘宝网，开始抢夺eBay易趣C2C市场。
+2004年12月，马云创立第三方网上支付平台支付宝。
+2005年8月17日，雅虎宣布以10亿美元现金和雅虎中国全部资产为代价，同时获雅虎10
+马云
+马云(4张)
+亿美元投资，换取马云创办的阿里巴巴40%的股份和35%的投票权，马云出任中国雅虎董事局主席。
+2007年11月，马云创立的阿里巴巴网络有限公司在香港联交所主板挂牌上市。
+2008年10月31日，阿里巴巴有限公司和杭州师范大学合作共建杭州师范大学阿里巴巴商学院，马云出任董事长。
+2013年5月10日，马云正式卸任阿里巴巴集团CEO，陆兆禧接替马云出任阿里巴巴集团首席执行官。 [13]
+2013年5月28日，阿里巴巴集团联合银泰集团、复星集团、富春集团、顺丰、中通、圆通、申通、韵达等多家民营快递企业联合成立菜鸟网络科技有限公司，并同时启动中国智能骨干网（CSN）项目建设，马云出任菜鸟网络科技有限公司董事长。 [14]
+马云获颁香港科技大学荣誉博士学位
+马云获颁香港科技大学荣誉博士学位
+2013年8月22日，在UC优视9周年之际，阿里巴巴董事局主席马云和UC优视董事长俞永福向UC全体员工发布邮件宣布，马云将出任UC优视董事。 [15]
+2013年11月8日，马云出席香港科技大学第21届学位颁授典礼，并获得该校颁发的工商管理学荣誉博士学位。 [16]
+2014年9月19日，阿里巴巴集团于纽约证券交易所正式挂牌上市。 [17]
+2015年10月23日，《2015信中利·胡润IT富豪榜》发布，51岁的马云及其家族以1350亿元资产蝉联中国IT业首富，在13年里财富增长540倍。 [18]
+2015年10月26日，2015年福布斯中国富豪榜在北京发布，马云以218亿美元财富，排名第二。 [19]
+国务院总理李克强和民营企业家马云交谈
+国务院总理李克强和民营企业家马云交谈 [20]
+2015年11月4日，马云名列《福布斯》全球最有权力人物排行榜第22位。 [21]
+2016年10月27日，2016福布斯中国富豪榜公布，马云以282亿美元财富，排名第二位。 [22]
+2017年2月4日，阿里巴巴集团澳大利亚新西兰总部揭幕典礼在澳大利亚新南威尔士州举行。典礼上，浙商总会会长、阿里巴巴集团董事局主席马云表示，要将“让天下没有难做的生意”的理念带到大洋洲。 [23]
+2017年7月17日，《福布斯富豪榜》发布，马云以354亿美元身家排在第18位，重新取代王健林成为华人首富。 [24]
+2018年5月，福布斯十大最具影响力CEO排名第六。 [25]
+2018年7月31日，2018福布斯中国慈善榜发布，马云排名第14。 [26]
+2018年9月10日，马云发出题为“教师节快乐”的公开信宣布 [27]  ：一年后的阿里巴巴20周年之际，即2019年9月10日，他将不再担任集团董事局主席，届时由现任集团CEO张勇接任。 [28]
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightbox">
+        <div class="aboutme">
+            <h2 class="ab_title">关于网站</h2>
+            <div class="ab_con">
+                <p>创建时间：2018-1-1</p>
+                <p>主攻方向：python web与数据开发</p>
+                <p>创站地点：郑州</p>
+                <p>官方邮箱：2327431669@qq.com</p>
+            </div>
+        </div>
+        <div class="weixin">
+            <h2 class="ab_title">官方微信</h2>
+            <ul>
+                <img src="/static/picture/wx1.jpg">
+            </ul>
+        </div>
+    </div>
+</article>
+<footer>
+    <p>Design by <a href="#">连长</a> <a href="#">津ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+{% for v in user_obj1 %}
+{#    {% for  k,v  in v1.items %}#}
+
+
+
+         <tr>
+        <td><input name="" type="checkbox" value="" /></td>
+        <td>{{ v.user_birthday|date:"Y-m-d"  }}</td>
+        <td>{{ v.user_tel }}</td>
+        <td>{{ v.user_name }}</td>
+        <td>{{ v.user_adders }}</td>
+        <td>{{ v.user_pwd }}</td>
+        <td>
+            {% for v1 in v.role_set.all %}{# 页面内 反向查询 方法 多对多的方法反向 切记切记#}
+            {{ v1}}
+            {% endfor %}
+          </td>
+        <td> {% if v.user_is_recommend == 1 %}审核通过{% else %}未审核
+        {% endif %}</td>
+       <td data-id="{{ v.user_id }}"><a  {% if v.user_id == 30 %}
+       disabled="true" {% else %}href="javascript:"
+       {% endif %} class="tablelink del"> 删除</a>     <a  {% if v.user_id == 30 %}
+       disabled="true" {% else %}href="/back/user/update/{{ v.user_id }}"
+       {% endif %} class="tablelink"> 修改</a></td>
+        </tr>
+        {% endfor %}
+
+    <td colspan="9">
+        <div class="pagin">
+            <div class="message">共<i class="blue">{{ user_obj.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if user_obj1.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/user/list_part/?page={{ user_obj1.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/user/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if user_obj1.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/user/list_part/?page={{ user_obj1.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+

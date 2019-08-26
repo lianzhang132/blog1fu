@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/static/back/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/back/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/back/js/jquery.js"></script>
+<script type="text/javascript" src="/static/back/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/static/back/js/select-ui.min.js"></script>
+<script src="/static/layer/layer.js"></script>
+<script type="text/javascript" src="/static/back/kindeditor/kindeditor-all.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+	    $(".select1").uedSelect({
+			width : 345			  
+		});
+		$(".select2").uedSelect({
+			width : 167  
+		});
+		$(".select3").uedSelect({
+			width : 100
+		});
+
+	});
+
+</script>
+</head>
+
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">系统设置</a></li>
+    </ul>
+    </div>
+
+    <ul class="forminfo">
+    <li><label>名称<b>*</b></label><input name="menu_name" type="text" class="dfinput" placeholder="请填写名称"
+                                        style="width:518px;"/></li>
+   <li><label>链接地址<b>*</b></label><input name="menu_path" type="text" class="dfinput" placeholder="请填写地址"
+                                        style="width:518px;"/></li>
+    <li><label>父级菜单<b>*</b></label>
+    <div class="vocation">
+    <select class="select1" name="menu_pid_id">
+    <option value="">一级菜单</option>
+        {% for v in menu_list %}
+         <option value="{{ v.menu_id }}">{{ v.menu_name }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    </li>
+    <li><label>父级权限<b>*</b></label>
+    <div class="vocation">
+    <select class="select1" name="permission_pid_id">
+    <option value="">一级权限</option>
+        {% for v1 in permission_list %}
+         <option value="{{ v1.permission_id }}"><b>{{ v1.permission_name }}</b></option>
+        {% endfor %}
+    </select>
+    </div>
+    </li>
+
+    <li><label>&nbsp;</label><input name="dosubmit" type="button" id="dosubmit" class="btn" value="马上发布"></li>
+
+    </ul>
+</form>
+
+</body>
+<script>
+    {#$(document).ready(function (){#}
+    //当点击登录按钮时候，把form表单里的内容提交到后台  serialize将表单里的内容序列化提交给后台
+          $("#dosubmit").click(function () {
+        $.post( '/back/menu/add/' , $('form').serialize(), function (data) {
+            if (data.status == 1) {
+                layer.msg(data['info'], function () {
+                    window.location.reload()
+                });
+            } else {
+                layer.msg(data['info']);
+            }
+        }, 'json');
+    });
+
+    </script>
+</html>

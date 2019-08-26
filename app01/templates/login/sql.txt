@@ -1,0 +1,28 @@
+首页：
+SELECT article_title,article_img FROM article LIMIT 2
+
+
+SELECT article_title,article_img FROM article WHERE article_isrecommend=1 LIMIT 6  #索引
+
+
+
+order by的使用，正序asc，倒序desc  ：   SELECT * FROM article ORDER BY article_addtime desc LIMIT 2
+
+
+SELECT * FROM article e LEFT JOIN   `user` r on e.user_id=r.user_id  ORDER BY e.article_addtime desc LIMIT 2
+
+
+模糊查询：   SELECT * FROM article WHERE article_title like '%科技%' 
+
+
+
+
+
+
+详情页：
+SELECT * FROM article WHERE article_id=2
+
+左连接：   SELECT * FROM article e LEFT JOIN  `user` r on e.user_id=r.user_id
+
+内连接： SELECT e.article_title,e.article_decription,e.article_content,r.user_name FROM article e INNER  JOIN  `user` r on e.user_id=r.user_id WHERE e.article_isrecommend=0
+内连接：SELECT * FROM article e,`user` r WHERE e.user_id=r.user_id and  e.article_isrecommend=0

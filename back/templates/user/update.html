@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/static/back/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/back/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/back/js/jquery.js"></script>
+<script type="text/javascript" src="/static/back/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/static/back/js/select-ui.min.js"></script>
+
+<script type="text/javascript" src="/static/back/kindeditor/kindeditor-all.js"></script>
+
+  
+<script type="text/javascript">
+	$(document).ready(function(e) {
+	    $(".select1").uedSelect({
+			width : 345			  
+		});
+		$(".select2").uedSelect({
+			width : 167  
+		});
+		$(".select3").uedSelect({
+			width : 100
+		});
+
+
+	});
+
+</script>
+</head>
+
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">系统设置</a></li>
+    </ul>
+    </div>
+
+
+    <ul class="forminfo">
+    <li><label>姓名<b>*</b></label><input name="user_name" type="text" class="dfinput" value="{{ name }}"
+                                        style="width:518px;"/></li>
+   <li><label>电话<b>*</b></label><input name="user_tel" type="text" class="dfinput" value="{{ tel }}"
+                                        style="width:518px;"/></li>
+    <li><label>地址<b>*</b></label><input name="user_adders" type="text" class="dfinput" value="{{ adders }}"
+                                        style="width:518px;"/></li>
+    <li><label>是否审核<b>*</b></label><input name="user_is_recommend" type="text" class="dfinput" value="{{ recommend }}"
+                                        style="width:518px;"/></li>
+    <li><label>密码<b>*</b></label><input name="user_pwd" type="password" class="dfinput" value="{{ pwd }}"
+                                        style="width:518px;"/></li>
+     <li><label>生日<b>*</b></label><input name="user_birthday" type="text" class="dfinput" value="{{ birthday|date:"Y-m-d"  }}"
+                                        style="width:518px;"/></li>
+
+
+
+
+    </ul>
+     <div class="forminfo" ><label>工作<b>*</b></label>&nbsp;
+    {% for v in role_list %}
+        <input type="checkbox"
+{#               遍历列表不能用 遍历了对象集就可以用了#}
+               {% for v1 in work_list %}
+                {% if v == v1 %} checked="checked"{% endif %}
+               {% endfor %} name="user_work" value="{{ v.role_id }}" >{{ v.role_name }}
+    {% endfor %}
+    </div>
+
+    <br>
+    <li><label>&nbsp;</label><input name="dosubmit" type="submit" class="btn" value="马上发布"></li>
+</form>
+
+</body>
+
+</html>

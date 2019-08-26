@@ -1,0 +1,44 @@
+   <ul>
+
+
+            {% for v in articles_list %}
+                    <li>
+                    <h3 class="blogtitle"><a href="/diary/info/{{ v.article_id }}" target="_blank">{{ v.article_title }}</a></h3>
+                    <div class="bloginfo"><span class="blogpic"><a href="{% url 'app01:text' %}" title="{{ v.article_title }}"><img
+                            src="{{ v.article_img }}" alt="{{ v.article_title }}"/></a></span>
+                        <p>{{ v.article_description }}...</p>
+                    </div>
+                    <div class="autor">
+                        <span class="lm f_l"><a href="/diary/diary_person/{{ v.member.member_id }}" title="{{ v.member.member_nickname }}" target="_blank"
+                                                class="classname">{{ v.member.member_nickname }}</a></span>
+                        <span class="dtime f_l">{{ v.article_addtime }}</span>
+                        <span class="viewnum f_l">浏览（<a href="/diary/info/{{ v.article_id }}">{{ v.article_clicknum }}</a>）</span>
+                        <span class="pingl f_l">喜欢（ {{ v.article_praise_num }}）</span>
+                        <span class="f_r"><a href="/diary/info/{{ v.article_id }} class="more"> 阅读原文>>  </a></span>
+                    </div>
+                </li>
+
+
+                {% endfor %}
+
+</ul>
+        <div class="pagin" >
+            <ul class="paginList">
+                {% if articles_list.has_previous %}
+                    <li class="paginItem"><a
+                            href="/diary_part/?page={{ articles_list.previous_page_number }}"><span
+                            class="pagepre">上一页</span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/diary_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if articles_list.has_next %}
+                    <li class="paginItem"><a
+                            href="/diary_part/?page={{ articles_list.next_page_number }}"><span
+                            class="pagenxt">上一页</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+

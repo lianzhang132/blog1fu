@@ -1,0 +1,39 @@
+
+
+{% for v in member_obj %}
+         <tr>
+        <td><input name="" type="checkbox" value="" /></td>
+        <td>{{ v.member_name }}</td>
+         <td>{{ v.member_tel }}</td>
+        <td>{{ v.member_email }}</td>
+        <td>{{ v.member_nickname }}</td>
+        <td>{{ v.member_pwd }}</td>
+       <td data-id="{{ v.member_id }}"> <a href="javascript:;" class="tablelink del"> 删除</a>     <a href="/back/member/update/{{ v.member_id }}" class="tablelink"> 修改</a></td>
+        </tr>
+        {% endfor %}
+
+    <td colspan="8">
+        <div class="pagin">
+            <div class="message">共<i class="blue">{{ member_obj1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if member_obj.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/member/list_part/?page={{ member_obj.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/member/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if member_obj.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/member/list_part/?page={{ member_obj.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>

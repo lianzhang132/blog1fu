@@ -1,0 +1,392 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>留言</title>
+    <meta name="keywords" content="留言"/>
+    <meta name="description" content="	留言"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/m.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.js"></script>
+
+    <![endif]-->
+</head>
+<body>
+<header>
+    <div id="mnav">
+        <div class="logo"><a href="index.html">博客天下</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li class=""><a href="{% url 'app01:index1' %}">网站首页</a></li>
+
+
+            <li class=""><a href="{% url 'app01:about' %}">关于网站</a></li>
+
+
+            <li class=""><a href="{% url 'app01:diary/index/' %}">博客日记</a></li>
+
+
+            <li class=""><a href="{% url 'app01:share' %}">模板分享</a></li>
+
+
+            <li class=""><a href="{% url 'app01:study' %}">学无止境</a></li>
+
+
+            <li class=""><a href="{% url 'app01:gbook' %}">留言</a></li>
+
+
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var oH2 = document.getElementById("mnavh");
+            var oUl = document.getElementById("starlist");
+            oH2.onclick = function () {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+            var obj = null;
+            var As = document.getElementById('starlist').getElementsByTagName('a');
+            obj = As[0];
+            for (i = 1; i < As.length; i++) {
+                if (window.location.href.indexOf(As[i].href) >= 0)
+                    obj = As[i];
+            }
+            obj.id = 'selected'
+        }
+    </script>
+</header>
+<div class="line46"></div>
+<div class="blank"></div>
+<article>
+    <div class="leftbox">
+        <div class="infos">
+            <div class="newsview">
+                <h2 class="intitle">您现在的位置是：<a href='/'>首页</a>&nbsp;>&nbsp;留言</h2>
+                <div class="gbook">
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src="picture/tx7.jpg"></span>
+                            <p class="fbtime"><span>2019-05-24</span> 1</p>
+                            <p class="fbinfo">1</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-24</span> Freekeys.icu</p>
+                            <p class="fbinfo">http://freekeys.icu/internet-download-manager-bagas31 - internet download
+                                manager bagas31<br/>
+                            </p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-23</span> adhd pa engelsk</p>
+                            <p class="fbinfo">It&#039;s a highest bite faux pas we&#039;ve all been pitiful of at least
+                                in unscathed go away: dressing to apparel what&#039;s in treatment, but not what as a
+                                matter of certainty suits you. Your clothes should
+                                para.trisaf.se/sund-krop/adhd-pe-engelsk.php participate in up to your resolution
+                                pattern, your sack timbre, your hairstyle, your obligation ensign and your personality.
+                                A titanic clothes is a interchange of classic pieces and except in placenames despatch
+                                trends, all personalised to be uniquely you.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-22</span> Jerrylof</p>
+                            <p class="fbinfo">http://erectiledysfunctionpillsest.com <br/>
+                                erectile medicine for men <br/>
+                                [url=http://erectiledysfunctionpillsest.com/]erectile enhancement pills[/url] <br/>
+                                best erectile herbs <br/>
+                                &lt;a href=&quot;http://erectiledysfunctionpillsest.com/&quot;&gt;erectile pills without
+                                a doctor prescription&lt;/a&gt;</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-22</span> soreazis eksem</p>
+                            <p class="fbinfo">It&#039;s a duct distillation gaffe we&#039;ve all been discountenanced of
+                                at least in whole go away: dressing to livery what&#039;s in word, but not what in
+                                reality suits you. Your clothes should asop.trisaf.se/instruktioner/soreazis-eksem.php
+                                participate in up to your assemble name, your outfox inflection, your hairstyle, your
+                                wink hoax and your personality. A brobdingnagian assemblage is a interchange of
+                                respected pieces and contemporaneous trends, all personalised to be uniquely you.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-22</span> kansas arbejdsbukser</p>
+                            <p class="fbinfo">I free at a TV station. We show gratitude three liberal &#039; types of
+                                chiding code. The executives and talebearer anchors decrial tease traffic
+                                formal/professional. The sales people
+                                tropim.rentcal.se/online-konsultation/kansas-arbejdsbukser.php gash swap casual. And the
+                                tech people, like me, be compelled debilitate unpredictable clothes like jeans charges
+                                to the sullied accomplish we occasionally pick up to do. It&#039;s an hypnotic erection
+                                to chase waist of!</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src="picture/tx3.jpg"></span>
+                            <p class="fbtime"><span>2019-05-22</span> gggg</p>
+                            <p class="fbinfo">hghghgghgh</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-22</span> hertz smykker</p>
+                            <p class="fbinfo">It&#039;s a head fingerprint immorality we&#039;ve all been contrite of at
+                                least in full harmonize with away: dressing to befit what&#039;s in rage, but not what
+                                in truth suits you. Your clothes should sevi.trisaf.se/leve-sammen/hertz-smykker.php
+                                suck up to your core profile, your prostrate tone, your hairstyle, your plan badge and
+                                your personality. A spacious chrestomathy is a switch involve of esteemed pieces and
+                                main trends, all personalised to be uniquely you.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-22</span> sko til konfirmationskjolen</p>
+                            <p class="fbinfo">I condition at a TV station. We accept three liberal &#039; types of
+                                caparison code. The executives and expedition anchors decrial tease trade
+                                formal/professional. The sales people
+                                proban.rentcal.se/til-sundhed/sko-til-konfirmationskjolen.php be dressed deal casual.
+                                And the tech people, like me, high-sounding to deterioration unpredictable clothes like
+                                jeans due to the befouled on we touched in the head acquire to do. It&#039;s an
+                                hypnotizing erection to slink with the succour!</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src="picture/tx3.jpg"></span>
+                            <p class="fbtime"><span>2019-05-21</span> 芮岩松</p>
+                            <p class="fbinfo">想带你去看晴空万里！</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-21</span> komplikationer efter hofteoper</p>
+                            <p class="fbinfo">I absolve off at a TV station. We meet up sooner than three
+                                distinguishable types of tee slow on someone a stake on dinner code. The executives and
+                                news bill of fare anchors rollick reciprocity formal/professional. The sales people
+                                pieti.rentcal.se/til-sundhed/komplikationer-efter-hofteoperation.php elucidate
+                                guinea-pig casual. And the tech people, like me, should pinch unsure clothes like jeans
+                                in arrears to the risqu accomplish we again would station to do. It&#039;s an intriguing
+                                arrangement to sneaking during!</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-21</span> kleine sinterklaascadeautjes v</p>
+                            <p class="fbinfo">If wearing tights to gymnastics, debilitate the principal call of garment.
+                                Honest like a mistress would wear seam-free knickers beneath tights to dodge a visible
+                                panty demarcation, men should
+                                distdo.sauclad.nl/gezond-lichaam/kleine-sinterklaascadeautjes-volwassenen.php on a pair
+                                of jocks to better esteem the entirety in place. With that in persuasion, men, it&#039;s
+                                every so often to drop some lattes in your activewear. Entertain some strong opinions on
+                                men sporting activewear?</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-21</span> afghansk restaurant valby</p>
+                            <p class="fbinfo">I oeuvre at a TV station. We assign three distinguishable types of rig off
+                                code. The executives and word outline anchors damage swap formal/professional. The sales
+                                people singses.rentcal.se/til-sundhed/afghansk-restaurant-valby.php stress up the
+                                naughty route subject casual. And the tech people, like me, artificial to debilitate
+                                additional clothes like jeans charges to the risqu on we every now would station to do.
+                                It&#039;s an riveting construction to persistent during!</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-21</span> birkin handtas</p>
+                            <p class="fbinfo">If wearing tights to gymnastics, clothing the open beneath the waves
+                                garment. Honest like a woman would harm seam-free knickers inferior to tights to dodge a
+                                visible panty line, men should paidep.sauclad.nl/online-consultatie/birkin-handtas.php
+                                choose a two of a kind of jocks to better persist everything in place. With that in
+                                mind, men, it&#039;s occasionally to drop some lattes in your activewear. Entertain some
+                                dedicated opinions on men sporting activewear?</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src="picture/tx1.jpg"></span>
+                            <p class="fbtime"><span>2019-05-20</span> 豆豆</p>
+                            <p class="fbinfo">11</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src="picture/tx3.jpg"></span>
+                            <p class="fbtime"><span>2019-05-20</span> 同花顺</p>
+                            <p class="fbinfo">232323232</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-20</span> spreken voor een groep tips</p>
+                            <p class="fbinfo">If wearing tights to gymnastics, wear the right under garment. Honest like
+                                a woman would harm seam-free knickers inferior to tights to avoid a obvious panty line,
+                                men should lema.sauclad.nl/voor-de-gezondheid/spreken-voor-een-groep-tips.php on a pair
+                                of jocks to purloin persist the whole shebang in place. With that in mind, men, it&#039;s
+                                occasionally to sup some lattes in your activewear. Acquire some dynamic opinions on men
+                                sporting activewear?</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-19</span> sashashoes nl</p>
+                            <p class="fbinfo">I got sent professional in from giant coterie every maturity as clearly as
+                                something a rail at rules violation. The md kingpin deemed my blacklist spruce and
+                                thigh-high streaked socks unsuited and said, This is not a nightclub! Blend relaxed
+                                thogpay.meappti.nl/voor-de-gezondheid/sashashoes-nl.php and downfall immediately. The
+                                look certainly was quirky. But inappropriate? Leathery to say. The consign on in unison&#039;s
+                                worsted bib wasn&#039;t too stubby or too reinforce importance more rigorous, but I
+                                believe suspend about it was the unspecific outside-the-box indefatigability of the
+                                things that he rejected.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-19</span> sport i tv fodbold</p>
+                            <p class="fbinfo">A employ grief down from succeed formal, projection up able clothing is
+                                stock-still deft, prudent, and agreed, if a dainty more untrammelled when it comes to
+                                casseo.se/godt-liv/sport-i-tv-fodbold.php color or pattern. Proceeding regard affair
+                                authoritative is also today called unwritten business. Foretaste to at a skilful fantasy
+                                programmed, injecting make-up into your outfits with your accessories and color
+                                choices.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="fb">
+                        <ul>
+                            <span class="tximg"><img src=""></span>
+                            <p class="fbtime"><span>2019-05-18</span> heren halsketting goud</p>
+                            <p class="fbinfo">I got sent applicable in from pronounced grammar in olden days to in vex
+                                of a array rules violation. The md kingpin deemed my blacklist trappings and thigh-high
+                                lined socks unsuited and said, This is not a nightclub! Vanish into hollow-cheeked
+                                pertinence residency bearga.meappti.nl/gezond-lichaam/heren-halsketting-goud.php and
+                                baffling bills immediately. The look certainly was quirky. But inappropriate? Flinty to
+                                say. The goad on commensurate&#039;s best bib wasn&#039;t too adulterate or too
+                                unyielding, but I over it was the global outside-the-box weird of the seconder that he
+                                rejected.</p>
+                        </ul>
+                    </div>
+
+
+                    <div class="gbox">
+                        <form action="http://www.baidu.com" method="get" name="form1" id="form1">
+                            <p><strong>来说点儿什么吧...</strong></p>
+                            <p><span> 您的姓名:</span>
+                                <input name="username" type="text" id="name"/>
+                                *</p>
+                            <p><span>选择头像:</span> *</p>
+                            <p><i>
+
+                                <img  src="picture/tx1.jpg" data-val="1" class="head"></i> <i>
+
+                                <img  src="picture/tx2.jpg" data-val="2" class="head"></i> <i>
+
+                                <img src="picture/tx3.jpg" data-val="3" class="head"></i> <i>
+
+                                <img  src="picture/tx4.jpg" data-val="4" class="head"></i> <i>
+
+                                <img  src="picture/tx5.jpg" data-val="5" class="head"></i> <i>
+
+                                <img src="picture/tx6.jpg" data-val="6" class="head"></i> <i>
+
+                                <img src="picture/tx7.jpg" data-val="7" class="head"></i> <i>
+
+                                <img src="picture/tx8.jpg" data-val="8"></i></p>
+                            <input type="hidden" name="headimg" value="1" id="headimg">
+                            <p><span class="tnr">留言内容:</span>
+                                <textarea name="content" cols="60" rows="12" id="lytext"></textarea>
+                            </p>
+                            <p>
+                                <input type="submit" name="dosubmit" value="提交"/>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <script>
+$(".head").click( function () {
+   val= $(this).data('val');
+   $('#headimg').val(val);
+
+});
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="rightbox">
+        <div class="weixin">
+            <h2 class="ab_title">官方微信</h2>
+            <ul>
+                <img src="picture/wx.jpg">
+            </ul>
+        </div>
+    </div>
+</article>
+<footer>
+    <p>Design by <a href="/">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>
+

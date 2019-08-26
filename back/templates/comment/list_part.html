@@ -1,0 +1,45 @@
+
+
+        {% for v in com_obj %}
+            <tr>
+        <td><input name="" type="checkbox" value="" /></td>
+        <td>{{ v.article.article_title }}</td>
+        <td>{{ v.comment_content }}</td>
+        <td>{{ v.comment_addtime }}</td>
+        <td>{{ v.member.member_name }}</td>
+        <td data-id="{{ v.comment_id }}"> <a href="javascript:;" class="tablelink del"> 删除</a>
+            <a href="/back/comment/update/{{ v.comment_id }}" class="tablelink">修改</a></td>
+        </tr>
+
+        {% endfor %}
+
+
+
+<tr>
+    <td colspan=6>
+        <div class="pagin">
+            <div class="message">共<i class="blue">{{ com_obj1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if com_obj.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/comment/list_part/?page={{ com_obj.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/comment/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if com_obj.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/comment/list_part/?page={{ com_obj.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+
+</tr>

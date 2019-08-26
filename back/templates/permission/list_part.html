@@ -1,0 +1,46 @@
+
+{% for v in permission_list %}
+            <tr>
+            <form action="" id="menuids">
+                {% csrf_token %}
+        <td><input name="menuids[]" type="checkbox" class="menuids" value="{{ v.permission_id }}" /></td> </form>
+        <td>{{ forloop.counter }}</td><!--编号-->
+        <td >{{ v.permission_name }}</td>
+        <td >{{ v.permission_path }}</td>
+        <td> {% if v.permission_pid.permission_name  %}{{ v.permission_pid.permission_name }} {% else %} <b >本权限为一级菜单 无父级权限</b>
+
+        {% endif %} </td>
+             <td data-id="{{ v.permission_id }}"><a href="/back/permission/update/{{ v.permission_id }}" class="tablelink">修改</a>
+                 <a href="javascript:;" class="tablelink del"> 删除</a></td>
+        </tr>
+
+        {% endfor %}
+
+<tr>
+    <td colspan="6">
+        <div class="pagin"><a href='javascript:;' id='muldel'>批量删除</a>
+            <div class="message">共<i class="blue">{{ permission_list1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if permission_list.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/permission/list_part/?page={{ permission_list.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/permission/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if permission_list.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/permission/list_part/?page={{ permission_list.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+
+</tr>

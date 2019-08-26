@@ -1,0 +1,48 @@
+
+{% for v in role_list %}
+            <tr>
+            <form action="" id="menuids">
+                {% csrf_token %}
+        <td><input name="menuids[]" type="checkbox" class="menuids" value="{{ v.menu_id }}" /></td> </form>
+        <td>{{ forloop.counter }}</td><!--编号-->
+        <td >{{ v.role_name }}</td>
+        <td width="70%">{{ v.role_access }}</td>
+
+
+            <td data-id="{{ v.role_id }}"><a  {% if v.user_id == 30 %}
+       disabled="true" {% else %}href="javascript:"
+       {% endif %} class="tablelink del"> 删除</a>     <a  {% if v.role_id == 18 %}
+       disabled="true" {% else %}href="/back/role/update/{{ v.role_id }}"
+       {% endif %} class="tablelink"> 修改</a></td>
+        </tr>
+
+        {% endfor %}
+
+<tr>
+    <td colspan="6">
+        <div class="pagin"><a href='javascript:;' id='muldel'>批量删除</a>
+            <div class="message">共<i class="blue">{{ role_list1.count }}</i>条记录，当前显示第&nbsp;<i class="blue">{{ currentPage }}&nbsp;</i>页
+            </div>
+            <ul class="paginList">
+                {% if role_list.has_previous %}
+                    <li class="paginItem"><a
+                            href="/back/role/list_part/?page={{ role_list.previous_page_number }}"><span
+                            class="pagepre"></span></a></li>
+                {% endif %}
+                {% for num in pageRange %}
+                    <li class="paginItem {% if num == currentPage %}current{% endif %}"><a
+                            href="/back/role/list_part/?page={{ num }}">{{ num }}</a></li>
+                {% endfor %}
+                {% if menu_list.has_next %}
+                    <li class="paginItem"><a
+                            href="/back/role/list_part/?page={{ role_list.next_page_number }}"><span
+                            class="pagenxt"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+
+    </td>
+
+</tr>

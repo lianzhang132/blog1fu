@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/static/back/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/back/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/back/js/jquery.js"></script>
+<script type="text/javascript" src="/static/back/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/static/back/js/select-ui.min.js"></script>
+<script type="text/javascript" src="/static/back/kindeditor/kindeditor-all.js"></script>
+<script src="/static/layer/layer.js"></script>
+    <script src="/static/laydate1/laydate.js"></script>
+
+     <script>
+            KindEditor.ready(function(K) {
+                    window.editor = K.create('#content',{
+                        afterBlur:function(){
+                          this.sync();
+                        },
+                        width:"800",
+                        height:"600",
+                        resizeType:0,
+                        uploadJson:"/back/comment/upload/",
+                        extraFileUploadParams:{
+                            csrfmiddlewaretoken:"{{ csrf_token }}"
+                        },
+                        filePostName:"upload_img"//上传图片的名称
+                    });
+            });
+</script>
+  
+<script type="text/javascript">
+	$(document).ready(function(e) {
+	    $(".select1").uedSelect({
+			width : 345			  
+		});
+		$(".select2").uedSelect({
+			width : 167  
+		});
+		$(".select3").uedSelect({
+			width : 100
+		});
+
+		//加载富文本编辑器
+	        {#KindEditor.ready(function(K) {#}
+	        {#    K.create('#content', {#}
+	        {#        allowFileManager : true,#}
+	        {#        filterMode:true,#}
+	        {#        afterBlur:function(){#}
+	        {#            this.sync("#content");#}
+	        {#        }#}
+	        {#    });#}
+	      {#  });#}
+	});
+
+</script>
+</head>
+
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">系统设置</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+  	<div id="tab1" class="tabson">
+ 
+    
+    <ul class="forminfo">
+    <li><label>评论时间<b>*</b></label><input id="comtime" name="comment_addtime" value="{{ comment_addtime }}" type="text" class="dfinput"
+                                          placeholder="请填写评论时间"  style="width:518px;"/></li>
+<script>
+    //执行一个laydate实例
+laydate.render({
+  elem: '#comtime', //指定元素
+
+});
+</script>
+
+    <li><label>作者<b>*</b></label>
+    
+
+    <div class="vocation"  >
+    <select class="select1" name="member_name" >
+        {% for v in member_obj %}
+             <option>{{ v.member_name }}</option>
+
+        {% endfor %}
+    </select>
+    </div>
+    </li>
+
+    <li><label>文章<b>*</b></label>
+    
+    <div class="usercity">
+    
+    <div class="cityleft" >
+    <select class="select2" name="article_title" >
+        {% for v1 in article_obj %}
+            <option>{{ v1.article_title }}</option>
+        {% endfor %}
+
+
+    </select>
+    </div>
+    
+    </div>
+    
+    
+    
+    </li>
+    <li><label>评论内容<b>*</b></label><textarea id="content" name="content" style="width:700px;height:250px;"></textarea>
+
+    </li>
+
+
+    <li><input type="button"  id="dosubmit" class ="btn" value="添加"/></li>
+    </ul>
+    
+    </div> 
+    
+    
+  	
+       
+	</div> 
+ 
+    
+    </div>
+
+</form>
+</body>
+<script>
+    {#$(document).ready(function (){#}
+    //当点击登录按钮时候，把form表单里的内容提交到后台  serialize将表单里的内容序列化提交给后台
+          $("#dosubmit").click(function () {
+        $.post( '/back/comment/add/' , $('form').serialize(), function (data) {
+            if (data.status == 1) {
+                layer.msg(data['info'], function () {
+                    window.location.reload()
+                });
+            } else {
+                layer.msg(data['info']);
+            }
+        }, 'json');
+    });
+
+    </script>
+</html>

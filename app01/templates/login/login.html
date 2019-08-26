@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>用户登录 - 博客天下</title>
+    <link rel="shortcut icon" href=//common.cnblogs.com/favicon.ico type=image/x-icon>
+    <script src="/static/js/login-iconfont.js"></script>
+    <link href="/static/css/_withoutnav.min.css" rel=stylesheet>
+    <link href="/static/css/signin.min.css" rel=stylesheet>
+<body>
+<div class=center-container>
+    <div class="center-body h-sm-100 card">
+        <div class=card-body>
+            <div class="login-top text-center"><span class=login-title>博客天下用户登录</span> <a
+                    href="https://www.cnblogs.com/">
+                <svg class=login-sign>
+                    <use xlink:href=#icon-login-sign></use>
+                </svg>
+            </a>
+                <div class=login-info>代码改变世界</div>
+            </div>
+{#            <form action="/login/" method="post">#}
+{#                <div><input type="text"name="test">shishi</div>#}
+{#                <div><input type="text"name="test1">shishi1</div>#}
+{#                <button value="denglu">登录</button>#}
+{#            </form>#}
+            <form id=loginForm method="post"
+                  action="">
+                {% csrf_token %}
+                <div class=form-group><input tabindex=1 class=form-control placeholder=登录用户名 autofocus type=text
+                                             data-val=true data-val-required=请输入登录用户名 id=LoginName name=lname> <span
+                        class="invalid-feedback field-validation-valid" data-valmsg-for=LoginName
+                        data-valmsg-replace=true></span> <a href=//passport.cnblogs.com/GetUsername.aspx
+                                                            class=txt-forget-sign>忘记登录用户名</a></div>
+                <div class=form-group><input tabindex=2 class=form-control placeholder=密码 type=password data-val=true
+                                             data-val-required=请输入密码 id=Password name=pword> <span
+                        class="invalid-feedback field-validation-valid" data-valmsg-for=Password
+                        data-valmsg-replace=true></span> <a href="/app01/login/findPwd/"
+                                                            class=txt-forget-sign>忘记密码</a></div>
+                <div class=form-group><input  placeholder=验证码 type=text  name=validimg1>
+                    <img width="200" height="36" id="valid_code_img" src="/app01/get_valid_code_img/" alt="" onclick="this.src='/app01/get_valid_code_img/?'+Math.random()"></div><span
+                        class="invalid-feedback field-validation-valid" data-valmsg-for=Password
+                        data-valmsg-replace=true></span> <a href="/app01/login/findPwd/"
+                                                            class=txt-forget-sign>忘记密码</a></div>
+                <div class="form-check form-remember"><input tabindex=3 type=checkbox data-val=true
+                                                             data-val-required="The 记住我 field is required."
+                                                             id=IsRemember name=IsRemember value=true> <label
+                        class=label-remember for=IsRemember>记住我</label></div>
+                <input tabindex=4 id=submitBtn  type=submit class="btn-login btn btn-primary btn-sm ladda-button px-4"
+                        data-style=slide-down>
+                <!--<input type=hidden id=PublicKey name=PublicKey-->
+                       <!--value=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCp0wHYbg/NOPO3nzMD3dndwS0MccuMeXCHgVlGOoYyFwLdS24Im2e7YyhB0wrUsyYf0/nhzCzBK8ZC9eCWqd0aHbdgOQT6CuFQBMjbyGYvlVYU2ZP7kG9Ft6YV6oc9ambuO7nPZh+bvXH0zDKfi02prknrScAKC0XhadTHT3Al0QIDAQAB>-->
+                <!--<input class=none type=checkbox checked data-val=true-->
+                       <!--data-val-required="The EnableCaptcha field is required." id=EnableCaptcha name=EnableCaptcha-->
+                       <!--value=true>-->
+                <div class=login-footer>
+                    <div class=ajax-error-box>
+                        <div class="ajax-error validation-summary-valid" data-valmsg-summary=true>
+                            <ul>
+                                <li style=display:none>
+                            </ul>
+                        </div>
+                    </div>
+                    <span>没有帐户，<a href="enroll.html">立即注册</a></span></div>
+                <input name=__RequestVerificationToken type=hidden
+                       value=CfDJ8D8Q4oM3DPZMgpKI1MnYlrkmIZRf4Yxw-6eUmkatqoVXG2FFKB7Ei4nj4uTJbfrfRZ64v5J4mOXwjBBw1rr7_uV_h5D4tAsugtcvI1CgB_q-7TjjkftCeK1D7g-kdgYia9x-QuEytVUr2hohIvN92pI><input
+                    name=IsRemember type=hidden value=false><input name=EnableCaptcha type=hidden value=false>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/signin.min.js"></script>

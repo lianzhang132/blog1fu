@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>博客天下</title>
+    <meta name="keywords" content="个人博客,个人博客模板"/>
+    <meta name="description" content="个人博客简介"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/m.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/back/js/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/static/js/modernizr.js"></script>
+    <![endif]-->
+    <script src="/static/js/page.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+        <script>
+            KindEditor.ready(function(K) {
+                    window.editor = K.create('#content',{
+                        width:"800",
+                        height:"600",
+                        resizeType:0,
+                        uploadJson:"/back/article/upload/",
+                        extraFileUploadParams:{
+                            csrfmiddlewaretoken:"{{ csrf_token }}"
+                        },
+                        filePostName:"upload_img"//上传图片的名称
+                    });
+            });
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+	    $(".select1").uedSelect({
+			width : 345
+		});
+		$(".select2").uedSelect({
+			width : 167
+		});
+		$(".select3").uedSelect({
+			width : 100
+		});
+
+	});
+
+</script>
+</head>
+<body>
+<header>
+
+    <div id="mnav">
+        <div class="logo"><a href="index.html">博客天下</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li class=""><a href="{% url 'app01:index1' %}">网站首页</a></li>
+
+
+            <li class=""><a href="{% url 'app01:about' %}">关于网站</a></li>
+
+
+            <li class=""><a href="{% url 'app01:diary/index/' %}">博客日记</a></li>
+
+            <li class=""><a href="{% url 'app01:article/add/' %}">发表博文</a></li>
+
+
+            <li class=""><a href="{% url 'app01:share' %}">模板分享</a></li>
+
+
+            <li class=""><a href="{% url 'app01:study' %}">学无止境</a></li>
+
+
+            <li class=""><a href="{% url 'app01:gbook' %}">留言</a></li>
+            <li class="">{{ member_name }}</li>
+            <li class=""><a href="{% url 'app01:enroll' %}">注册</a></li>
+            <li class=""><a href="{% url 'app01:logout' %}">退出</a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var oH2 = document.getElementById("mnavh");
+            var oUl = document.getElementById("starlist");
+            oH2.onclick = function () {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+            var obj = null;
+            var As = document.getElementById('starlist').getElementsByTagName('a');
+            obj = As[0];
+            for (i = 1; i < As.length; i++) {
+                if (window.location.href.indexOf(As[i].href) >= 0)
+                    obj = As[i];
+            }
+            obj.id = 'selected'
+        }
+    </script>
+</header>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+
+
+    </ul>
+    </div>
+
+
+    <ul class="forminfo">
+    <li><label>标题<b>*</b></label><input name="title" type="text" class="dfinput"  placeholder="请填写文章标题"
+                                        style="width:518px;"/></li>
+
+    <li><label>是否推荐<b>*</b></label><input name="article_is_recommend" type="text" class="dfinput" placeholder="是否推荐"
+                                        style="width:518px;"/></li>
+
+    <li><label>文章内容<b>*</b></label><textarea id="content" name="content" style="width:700px;height:250px;"></textarea>
+
+    </li>
+    <li>
+            <a id="upload_image_name" src="javascript:;"><input type="button"  value="上传文件"></a>
+
+        <ul id="image_name_list" name="article_img"></ul>
+                    </li>
+    <li><label>&nbsp;</label><input name="dosubmit" type="submit" class="btn" value="马上发布"></li>
+
+{#    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="dosubmit" value="提交"/></li>#}
+
+
+    </ul>
+
+
+</form>
+
+<script language="JavaScript">
+        var msgLayero_upload_image_name;
+        var index_upload_image_name;
+        var layer_upload_image_name = 1;
+        //实例化一个plupload上传对象
+        var uploader_upload_image_name = new plupload.Uploader({
+            browse_button: 'upload_image_name', //触发文件选择对话框的按钮，为那个元素id
+            url: '/app01/article/upload2/', //服务器端的上传页面地址
+            flash_swf_url: '/static/plupload/Moxie.swf', //swf文件，当需要使用swf方式进行上传时需要配置该参数
+            silverlight_xap_url: '/static/plupload/Moxie.xap', //silverlight文件，当需要使用silverlight方式进行上传时需要配置该参数
+            multipart_params: {
+                type: 'image_name',
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            resize: {
+                width: 800//指定压缩后图片的宽度，如果没有设置该属性则默认为原始图片的宽度
+                //height: , //指定压缩后图片的高度，如果没有设置该属性则默认为原始图片的高度
+                //crop: false //是否裁剪图片
+            },
+            filters: {
+                max_file_size: '4mb'
+            },
+            init: {
+                //选择文件
+                FilesAdded: function (up, files) {
+                    //加载层
+                    index_upload_image_name = layer.msg('上传中...', {
+                        icon: 16, time: 0,
+                        shade: 0.01,
+                        success: function (layero, index) {
+                            msgLayero_upload_image_name = layero;//是加载层的div
+                        }
+                    });
+                    //layer_upload_image_name = layer.msg('上传中...', {time: 0}); //不自动关闭
+                    uploader_upload_image_name.start();
+                },
+                UploadProgress: function (up, file) { //上传中，显示进度条
+                    var percent = file.percent;
+                    msgLayero_upload_image_name.find('.layui-layer-content').html('<i class="layui-layer-ico layui-layer-ico1"></i>上传中...' + percent + '%');
+
+                },//单个文件上传完成
+                FileUploaded: function (up, file, responseObject) {
+                    console.log($.parseJSON(responseObject.response));//成功回调函数
+
+{#                    $('#image_name_list').html('');#}
+                    var result = $.parseJSON(responseObject.response);
+                    if (result.status === 1) {
+                        //上传成功
+                        var htmls = '<li class="img_upload" style="position:relative;margin:0 10px -10px 0;">';
+                        htmls += '<input  type="hidden" name="image_name[]" value="" ' + result.file + '">'; //隐藏域，是为了把图片地址入库。。
+                        htmls += '<img src="' + result.file + '" width="250"  >';
+                        htmls += '<span  style="position:absolute;top:-8px;right:-6px;background-color:#fff;border-radius:10px;"><a href=javascript:; class="delImg" data-val="'+result.file+'">&nbsp;<img src="/static/images/del.png" width="15" /></a></span>';
+                        htmls += '</li>';
+
+                        $('#image_name_list').append(htmls);
+                        //上传成功的弹出框
+                        msgLayero_upload_image_name.find('.layui-layer-content').html('<i class="layui-layer-ico layui-layer-ico1"></i>' + result.message);
+
+                    } else {
+                        //上传失败的弹出框
+                        msgLayero_upload_image_name.find('.layui-layer-content').html('<i class="layui-layer-ico layui-layer-ico2"></i>' + result.message);
+
+                    }
+                    setTimeout(function () {
+                        layer.close(index_upload_image_name);
+                    }, 2000);
+
+                },
+                //全部文件上传完成
+                UploadComplete: function (up, files) {
+                    setTimeout(function () {
+                        layer.close(index_upload_image_name);
+                    }, 2000);
+                },
+                //返回错误
+                Error: function (up, err) {
+                    msgLayero_upload_image_name.find('.layui-layer-content').html('<i class="layui-layer-ico layui-layer-ico2"></i>' + result.message);
+                    setTimeout(function () {
+                        layer.close(index_upload_image_name);
+                    }, 2000);
+                }
+            }
+        });
+
+        uploader_upload_image_name.init();
+
+    $(document).on('click', '.delImg', function () {
+        _this=this;
+        $.post('{% url "app01:article/delImg/" %}', {
+            path: $(_this).data("val"),
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        }, function (json) {
+            if (json.status === 1) {
+                layer.msg("删除成功", {
+                    time: 2000 //2s后自动关闭
+                });
+               $(_this).parent().parent().remove();
+            } else {
+                layer.msg("删除失败", {
+                    time: 2000 //2s后自动关闭
+                });
+            }
+        }, 'json');
+    });
+
+    </script>
+
+    <div class="rightbox">
+        <div class="aboutme">
+            <h2 class="ab_title">关于网站</h2>
+            <div class="avatar"><img src="/static/picture/b04.jpg"/></div>
+            <div class="ab_con">
+                <p>创建时间：2018-1-1</p>
+                <p>主攻方向：python web与数据开发</p>
+                <p>创站地点：郑州</p>
+                <p>官方邮箱：2327431669@qq.com</p>
+            </div>
+        </div>
+        <div class="blank"></div>
+        <div class="search">
+            <form action="/app01/search/" method="post" name="searchform" id="searchform">
+                {% csrf_token %}
+                <input name="keyboard" id="keyboard" class="input_text" placeholder="请输入关键字"
+                       style="color: rgb(153, 153, 153);"
+                       onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}"
+                       onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+                <input name="show" value="title" type="hidden">
+                <input name="tempid" value="1" type="hidden">
+                <input name="tbname" value="news" type="hidden">
+                <input name="Submit" class="input_submit" value="搜索" type="submit">
+            </form>
+        </div>
+        {% load my_tags %}
+        {% rightArticle %}
+
+
+<footer>
+    <p>Design by <a href="#">连长个人博客</a> <a href="#">蜀ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>

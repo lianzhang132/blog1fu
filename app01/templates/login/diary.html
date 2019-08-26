@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>博客日记</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/m.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/back/js/jquery.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="/static/js/modernizr.js"></script>
+
+    <![endif]-->
+</head>
+<body>
+<header>
+    <div id="mnav">
+        <div class="logo"><a href="/">博客天下</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li class=""><a href="{% url 'app01:index1' %}">网站首页</a></li>
+
+
+            <li class=""><a href="{% url 'app01:about' %}">关于网站</a></li>
+
+
+            <li class=""><a href="{% url 'app01:diary/index/' %}">博客日记</a></li>
+
+            <li class=""><a href="{% url 'app01:share' %}">模板分享</a></li>
+
+
+            <li class=""><a href="{% url 'app01:study' %}">学无止境</a></li>
+
+
+            <li class=""><a href="{% url 'app01:gbook' %}">留言</a></li>
+            <li class=""><a href="/diary/diary_person/{{ now_id }}">{{ member_name }}</a></li>
+            <li class=""><a href="{% url 'app01:article/add/' %}">发表博文</a></li>
+            <li class=""><a href="{% url 'app01:logout' %}">退出</a></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var oH2 = document.getElementById("mnavh");
+            var oUl = document.getElementById("starlist");
+            oH2.onclick = function () {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+            var obj = null;
+            var As = document.getElementById('starlist').getElementsByTagName('a');
+            obj = As[0];
+            for (i = 1; i < As.length; i++) {
+                if (window.location.href.indexOf(As[i].href) >= 0)
+                    obj = As[i];
+            }
+            obj.id = 'selected'
+        }
+    </script>
+</header>
+<div class="line46"></div>
+<article>
+
+    <div class="leftbox">
+
+        <div class="newblogs">
+            <h2 class="hometitle"><span>
+</span>博客日记</h2>
+             <form action="" method="post">
+                {% csrf_token %}
+            <div class="diary_part">
+
+            </div>
+                  </form>
+             <script>
+                //首次页面加载，通过ajax拿到数据，放在maina容器里
+            show_list();
+            function show_list() {
+                $.post("{% url 'app01:diary_part' %}", $('form').serialize(), function (data) {
+                    $(".diary_part").html(data);
+                });
+            }
+                //点击分页，点击a连接：
+            $(document).on('click', '.pagin a', function () {
+                $.post(this.href, $('form').serialize(), function (data) {
+                    $(".diary_part").html(data);
+                });
+                return false;//让a连接失效
+            });
+            </script>
+            <div class="pagelist"></div>
+        </div>
+    </div>
+
+    <div class="rightbox">
+        <div class="blank"></div>
+        <div class="search">
+           <form action="/search/" method="post" name="searchform" id="searchform">
+                {% csrf_token %}
+                <input name="keyboard" id="keyboard" class="input_text" placeholder="请输入关键字"
+                       style="color: rgb(153, 153, 153);"
+                       onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}"
+                       onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+                <input name="show" value="title" type="hidden">
+                <input name="tempid" value="1" type="hidden">
+                <input name="tbname" value="news" type="hidden">
+                <input name="Submit" class="input_submit" value="搜索" type="submit">
+            </form>
+        </div>
+       {% load my_tags %}
+        {% rightArticle %}
+
+    </div>
+</article>
+<footer>
+    <p>Design by <a href="#">博客天下</a> <a href="#">蜀ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>
